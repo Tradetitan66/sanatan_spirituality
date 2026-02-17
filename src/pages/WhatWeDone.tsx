@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { GalleryItem, Testimonial, Statistic } from '../types';
-import { Users, Calendar, Heart, X } from 'lucide-react';
+import { Statistic } from '../types';
+import { Users, Calendar, Heart } from 'lucide-react';
+
+const FEATURED_VIDEO_ID = 'Ti1OlqzjpS0';
 
 export default function WhatWeDone() {
-  const [gallery, setGallery] = useState<GalleryItem[]>([]);
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [statistics, setStatistics] = useState<Statistic[]>([]);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,15 +19,8 @@ export default function WhatWeDone() {
       return;
     }
     try {
-      const [galleryRes, testimonialsRes, statisticsRes] = await Promise.all([
-        supabase.from('gallery').select('*').order('date', { ascending: false }),
-        supabase.from('testimonials').select('*').order('date', { ascending: false }),
-        supabase.from('statistics').select('*'),
-      ]);
-
-      if (galleryRes.data) setGallery(galleryRes.data);
-      if (testimonialsRes.data) setTestimonials(testimonialsRes.data);
-      if (statisticsRes.data) setStatistics(statisticsRes.data);
+      const { data } = await supabase.from('statistics').select('*');
+      if (data) setStatistics(data);
     } catch (error) {
       console.error('Error fetching data:', error);
     } finally {
@@ -36,9 +28,15 @@ export default function WhatWeDone() {
     }
   };
 
+  const defaults: Record<string, number> = {
+    members: 1000,
+    events_conducted: 20,
+    people_impacted: 5000,
+  };
   const getStatValue = (label: string) => {
     const stat = statistics.find((s) => s.label === label);
-    return stat ? stat.value : 0;
+    const value = stat ? stat.value : 0;
+    return value > 0 ? value : (defaults[label] ?? 0);
   };
 
   const stats = [
@@ -65,21 +63,18 @@ export default function WhatWeDone() {
   const timeline = [
     {
       year: '2026',
-      title: 'Expanding Horizons',
-      description: 'Launched new meditation centers across India and international outreach programs.',
-      achievements: ['5 new centers opened', 'International yoga teacher training', '10,000+ new members'],
+      title: 'Expanding Horizon',
+      achievements: ['Work started on Sumarti Ashram Bharat with co-founder Acharya Abhi Yogi Ji', 'International yoga teacher training'],
     },
     {
       year: '2025',
-      title: 'Digital Transformation',
-      description: 'Brought spiritual teachings to the digital age with online courses and virtual satsangs.',
-      achievements: ['Online platform launch', '50+ virtual events', 'Global community building'],
+      title: 'New Journey',
+      achievements: ['New chapter launched in Bharat USA', 'Sanatan Sanstha UK (SSUK) launches more chapters in USA and Bharat and now becomes Sanatan Spirituality Foundation (SSF)'],
     },
     {
-      year: '2024',
-      title: 'Foundation Year',
-      description: 'Established the Sanatan Spirituality Foundation with a vision to preserve and promote ancient wisdom.',
-      achievements: ['First yoga center', 'Community of 1000 seekers', 'Monthly satsangs initiated'],
+      year: '2022',
+      title: 'Foundation Years',
+      achievements: ['Started Sanatan UK', 'Did first Bhagavad Gita event in UK Parliament'],
     },
   ];
 
@@ -131,6 +126,24 @@ export default function WhatWeDone() {
         </div>
       </section>
 
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Featured Video</h2>
+          <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-12" />
+          <div className="max-w-4xl mx-auto">
+            <div className="aspect-video w-full rounded-xl overflow-hidden border border-gray-700">
+              <iframe
+                src={`https://www.youtube.com/embed/${FEATURED_VIDEO_ID}`}
+                title="YouTube video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-black relative">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-16">Our Journey</h2>
@@ -143,8 +156,7 @@ export default function WhatWeDone() {
                 )}
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-xl border border-gray-700 hover:border-[#FF6B00] transition-all duration-300">
                   <div className="text-[#FF6B00] font-bold text-2xl mb-2">{item.year}</div>
-                  <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-gray-300 mb-4">{item.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
                   <div className="space-y-2">
                     {item.achievements.map((achievement, i) => (
                       <div key={i} className="flex items-center space-x-2 text-gray-400">
@@ -159,82 +171,6 @@ export default function WhatWeDone() {
           </div>
         </div>
       </section>
-
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Photo Gallery</h2>
-          <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-16" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {gallery.map((item) => (
-              <div
-                key={item.id}
-                className="group relative overflow-hidden rounded-xl cursor-pointer shadow-lg hover:shadow-[#FF6B00]/30 transition-all duration-300"
-                onClick={() => setSelectedImage(item.image_url)}
-              >
-                <img
-                  src={item.image_url}
-                  alt={item.caption}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white font-semibold">{item.caption}</p>
-                    <p className="text-gray-300 text-sm">{item.category}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gray-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-4">Testimonials</h2>
-          <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-16" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="bg-gradient-to-br from-black to-gray-800 p-6 rounded-xl border border-gray-700 hover:border-[#FF6B00] transition-all duration-300 shadow-lg"
-              >
-                <div className="text-[#FF6B00] text-5xl mb-4">"</div>
-                <p className="text-gray-300 mb-6 italic">{testimonial.content}</p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#FF6B00]/20 rounded-full flex items-center justify-center">
-                    <span className="text-[#FF6B00] font-bold text-xl">
-                      {testimonial.name.charAt(0)}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">{testimonial.name}</p>
-                    <p className="text-gray-400 text-sm">{testimonial.event_type}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-4 right-4 text-white hover:text-[#FF6B00] transition-colors"
-            onClick={() => setSelectedImage(null)}
-          >
-            <X size={40} />
-          </button>
-          <img
-            src={selectedImage}
-            alt="Gallery"
-            className="max-w-full max-h-full object-contain rounded-lg"
-          />
-        </div>
-      )}
     </div>
   );
 }

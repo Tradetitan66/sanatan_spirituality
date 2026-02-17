@@ -55,23 +55,23 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-6 text-[#FF6B00]">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
+                <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/what-we-done" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
+                <Link to="/what-we-done" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
                   What We've Done
                 </Link>
               </li>
               <li>
-                <Link to="/upcoming-events" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
+                <Link to="/upcoming-events" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
                   Upcoming Events
                 </Link>
               </li>
               <li>
-                <Link to="/team" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
-                  Our Team
+                <Link to="/team" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300">
+                  Our Story
                 </Link>
               </li>
             </ul>
@@ -83,14 +83,13 @@ export default function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="text-[#FF6B00] mt-1 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
-                  Sanatan Spirituality Foundation<br />
-                  New Delhi, India
+                  London, UK
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone size={20} className="text-[#FF6B00] flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300 text-sm">
-                  +91 98765 43210
+                <a href="tel:+447411642306" className="text-gray-400 hover:text-[#FF6B00] transition-colors duration-300 text-sm">
+                  +44-7411642306
                 </a>
               </li>
               <li className="flex items-center space-x-3">

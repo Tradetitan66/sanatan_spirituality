@@ -75,7 +75,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/2597205/pexels-photo-2597205.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+            backgroundImage: 'url(/hero.png)',
           }}
         >
           <div className="absolute inset-0 bg-black/60" />
@@ -86,43 +86,12 @@ export default function Home() {
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}
         >
-          <div className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-8 animate-pulse">
-            <svg
-              viewBox="0 0 200 200"
-              className="w-full h-full drop-shadow-2xl"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle cx="100" cy="100" r="90" fill="#FF6B00" opacity="0.1" />
-              <path
-                d="M100 40 L100 160 M70 70 L100 40 L130 70 M60 100 L140 100 M80 130 C80 130 90 140 100 140 C110 140 120 130 120 130"
-                stroke="#FF6B00"
-                strokeWidth="6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <text
-                x="100"
-                y="105"
-                fontSize="56"
-                fontWeight="bold"
-                fill="#FF6B00"
-                textAnchor="middle"
-                dominantBaseline="middle"
-              >
-                ॐ
-              </text>
-              <circle cx="100" cy="100" r="85" stroke="#FF6B00" strokeWidth="2" opacity="0.3" />
-              <circle cx="100" cy="100" r="75" stroke="#FF6B00" strokeWidth="1" opacity="0.2" />
-            </svg>
-          </div>
-
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4">
             Sanatan Spirituality Foundation
           </h1>
 
-          <p className="text-4xl sm:text-5xl md:text-7xl text-[#FF6B00] font-bold mb-8 tracking-wide devanagari">
-            संस्कार
+          <p className="text-xl md:text-2xl lg:text-3xl text-[#FF6B00] mb-8 devanagari font-medium">
+            संस्कार से संस्कृति तक
           </p>
 
           <p className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto px-4">
@@ -192,11 +161,13 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-4">
             About Me
           </h2>
-          <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-4" />
-          <p className="text-[#FF6B00] text-lg font-semibold text-center mb-10">Acharya Abhi Yogi ji</p>
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-center max-w-3xl mx-auto px-4">
-            Acharya Abhi Yogi ji is the Founder of Sanatan Spirituality Foundation and Co-founder of Sumarti Ashram in Bharat, working alongside Jagadguru Swami Sandeepani ji Maharaj. A dedicated Sanatan Dharma guide and spiritual educator, he leads multiple initiatives for Vedic and Sanatan education across the UK, Bharat, and the USA. For over a decade, he has been a Kundalini Yogi, freely teaching this sacred and hidden science to seekers around the world. Through his Sanatan Gurukul and Simply Sanatan platforms, he promotes Shastras, Sanskrit learning, Sanatan values, and spiritual literacy for children and adults. His mission is to ensure Sanatan and Vedic literacy for every Sanatani child and to spread the understanding that the true purpose of life is understood &amp; begins after spiritual awakening and self-realisation. 🕉️🙏
-          </p>
+          <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-6" />
+          <p className="text-[#FF6B00] text-lg font-semibold text-center mb-8">Acharya Abhi Yogi ji</p>
+          <div className="max-w-3xl mx-auto px-4">
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+              Acharya Abhi Yogi ji is the Founder of Sanatan Spirituality Foundation and Co-founder of Sumarti Ashram in Bharat, working alongside Jagadguru Swami Sandeepani ji Maharaj. A dedicated Sanatan Dharma guide and spiritual educator, he leads multiple initiatives for Vedic and Sanatan education across the UK, Bharat, and the USA. For over a decade, he has been a Kundalini Yogi, freely teaching this sacred and hidden science to seekers around the world. Through his Sanatan Gurukul and Simply Sanatan platforms, he promotes Shastras, Sanskrit learning, Sanatan values, and spiritual literacy for children and adults. His mission is to ensure Sanatan and Vedic literacy for every Sanatani child and to spread the understanding that the true purpose of life is understood &amp; begins after spiritual awakening and self-realisation. 🕉️🙏
+            </p>
+          </div>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { Event } from '../types';
-import { Calendar, MapPin, Clock, Filter, Mail } from 'lucide-react';
+import { Calendar, MapPin, Clock, Filter, MessageCircle, X } from 'lucide-react';
 
 const STATIC_EVENTS: Event[] = [
   {
@@ -19,6 +19,21 @@ const STATIC_EVENTS: Event[] = [
     status: 'upcoming',
     created_at: '2026-02-16T00:00:00Z',
   },
+  {
+    id: 'shivohum-mahashivratri-mela-2026',
+    title: 'SHIVOHUM MAHASHIVRATRI MELA',
+    date: '2026-02-21',
+    time: '12:30 PM - 4:30 PM',
+    venue: "Tudor Park Sports & Leisure, Browell's Lane, FELTHAM, TW13 7EF",
+    description:
+      'Celebrate Mahashivratri with Devotion, Joy & Divine Energy! FREE ENTRY. Activities include Shiv Puja (Rudrabhishek), Jalaabhishek, Shiv Baraat, Shiv Tandav, Bhajan Jamming, and more. Free Bihari samosas.',
+    category: 'Festival',
+    image_url: '/shivohum-mahashivratri-mela.png',
+    registration_link: '',
+    is_featured: false,
+    status: 'upcoming',
+    created_at: '2026-02-16T00:00:00Z',
+  },
 ];
 
 function sortEventsByDate(a: Event, b: Event) {
@@ -29,9 +44,8 @@ export default function UpcomingEvents() {
   const [events, setEvents] = useState<Event[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
-  const [subscribeMessage, setSubscribeMessage] = useState('');
+  const [selectedPoster, setSelectedPoster] = useState<string | null>(null);
 
   const categories = ['All', 'Yoga', 'Meditation', 'Discourse', 'Festival', 'Yatra'];
 
@@ -74,35 +88,6 @@ export default function UpcomingEvents() {
     }
   };
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!supabase) {
-      setSubscribeMessage('Newsletter signup is not available yet.');
-      setTimeout(() => setSubscribeMessage(''), 5000);
-      return;
-    }
-    try {
-      const { error } = await supabase
-        .from('newsletter_subscribers')
-        .insert([{ email }]);
-
-      if (error) {
-        if (error.code === '23505') {
-          setSubscribeMessage('You are already subscribed!');
-        } else {
-          throw error;
-        }
-      } else {
-        setSubscribeMessage('Successfully subscribed to our newsletter!');
-        setEmail('');
-      }
-    } catch (error) {
-      setSubscribeMessage('An error occurred. Please try again.');
-    }
-
-    setTimeout(() => setSubscribeMessage(''), 5000);
-  };
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-IN', {
@@ -142,7 +127,10 @@ export default function UpcomingEvents() {
             <h2 className="text-3xl font-bold text-center text-white mb-8">Featured Event</h2>
             <div className="max-w-5xl mx-auto bg-gradient-to-br from-black to-gray-800 rounded-2xl overflow-hidden border-2 border-[#FF6B00] shadow-2xl shadow-[#FF6B00]/20">
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative h-64 lg:h-auto">
+                <div
+                  className="relative h-64 lg:h-auto cursor-pointer"
+                  onClick={() => setSelectedPoster(featuredEvent.image_url || 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg')}
+                >
                   <img
                     src={featuredEvent.image_url || 'https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg'}
                     alt={featuredEvent.title}
@@ -209,7 +197,10 @@ export default function UpcomingEvents() {
                 key={event.id}
                 className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-[#FF6B00] transition-all duration-300 shadow-lg hover:shadow-[#FF6B00]/20 group"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div
+                  className="relative h-48 overflow-hidden cursor-pointer"
+                  onClick={() => setSelectedPoster(event.image_url || 'https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg')}
+                >
                   <img
                     src={event.image_url || 'https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg'}
                     alt={event.title}
@@ -256,39 +247,56 @@ export default function UpcomingEvents() {
           <div className="max-w-2xl mx-auto bg-gradient-to-br from-gray-800 to-black p-8 md:p-12 rounded-2xl border-2 border-[#FF6B00]/30 shadow-2xl">
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-[#FF6B00]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="text-[#FF6B00]" size={32} />
+                <MessageCircle className="text-[#FF6B00]" size={32} />
               </div>
-              <h2 className="text-3xl font-bold text-white mb-3">Stay Updated</h2>
+              <h2 className="text-3xl font-bold text-white mb-3">Get Event Updates on WhatsApp</h2>
               <p className="text-gray-300">
-                Subscribe to our newsletter and never miss an event
+                Join our WhatsApp group for event reminders and updates.
               </p>
             </div>
-            <form onSubmit={handleSubscribe} className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 px-6 py-3 rounded-full bg-gray-900 text-white border border-gray-700 focus:border-[#FF6B00] focus:outline-none transition-colors"
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+              <div className="flex flex-col items-center">
+                <img
+                  src="/whatsapp-qr.png"
+                  alt="WhatsApp QR Code"
+                  className="w-40 h-40 object-contain"
                 />
-                <button
-                  type="submit"
-                  className="bg-[#FF6B00] text-white px-8 py-3 rounded-full hover:bg-[#ff8534] transition-colors duration-300 font-semibold whitespace-nowrap"
-                >
-                  Subscribe
-                </button>
+                <p className="text-gray-400 text-sm mt-2">Scan to join</p>
               </div>
-              {subscribeMessage && (
-                <p className={`text-center ${subscribeMessage.includes('Successfully') ? 'text-green-400' : 'text-yellow-400'}`}>
-                  {subscribeMessage}
-                </p>
-              )}
-            </form>
+              <a
+                href="https://chat.whatsapp.com/HAmQud3OOaiKAGqbyxqBAv?mode=gi_t"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center space-x-2 bg-green-600 text-white px-8 py-4 rounded-full hover:bg-green-700 transition-colors duration-300 font-semibold"
+              >
+                <MessageCircle size={20} />
+                <span>Join on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
+
+      {selectedPoster && (
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedPoster(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white hover:text-[#FF6B00] transition-colors z-10"
+            onClick={() => setSelectedPoster(null)}
+            aria-label="Close"
+          >
+            <X size={40} />
+          </button>
+          <img
+            src={selectedPoster}
+            alt="Event poster"
+            className="max-w-full max-h-full object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }

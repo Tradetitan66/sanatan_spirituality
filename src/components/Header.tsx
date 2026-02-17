@@ -20,7 +20,7 @@ export default function Header() {
     { to: '/', label: 'Home' },
     { to: '/what-we-done', label: "What We've Done" },
     { to: '/upcoming-events', label: 'Upcoming Events' },
-    { to: '/team', label: 'Our Team' },
+    { to: '/team', label: 'Our Story' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -33,38 +33,12 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 flex items-center justify-center">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-full h-full"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M50 20 L50 80 M35 35 L50 20 L65 35 M30 50 L70 50 M40 65 C40 65 45 70 50 70 C55 70 60 65 60 65"
-                  stroke="#FF6B00"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <text
-                  x="50"
-                  y="50"
-                  fontSize="28"
-                  fontWeight="bold"
-                  fill="#FF6B00"
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                >
-                  ॐ
-                </text>
-              </svg>
-            </div>
-            <div className="hidden md:block">
-              <div className="text-white font-bold text-lg">Sanatan Spirituality</div>
-              <div className="text-[#FF6B00] text-xs">Foundation</div>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/logo.png"
+              alt="Sanatan Spirituality Foundation"
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8">

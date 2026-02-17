@@ -67,12 +67,32 @@ export default function Team() {
       <section className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-4">
-            Our Team
+            Our Story
           </h1>
           <div className="w-24 h-1 bg-[#FF6B00] mx-auto mb-8" />
           <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto">
             Meet the dedicated souls committed to preserving and sharing the wisdom of Sanatan Dharma
           </p>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <img
+              src="/our-story-community.png"
+              alt="Sanatan Spirituality Foundation community"
+              className="w-full rounded-2xl border-2 border-[#FF6B00]/30 shadow-2xl object-cover"
+            />
+            <div className="mt-10 max-w-3xl mx-auto space-y-6">
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+                In 2022, a sacred seed was planted in the UK — a seed rooted in Sanatan Dharma, culture, and spiritual awakening — and it blossomed into Sanatan Sanstha of UK, not merely an organization but a living movement. Our journey began with a historic celebration of Geeta Jayanti inside the halls of the UK Parliament, where the timeless wisdom of the Bhagavad Gita echoed through a space that shapes modern governance, symbolizing a powerful meeting of ancient dharma and contemporary society. From there, the momentum only grew. We launched Sanatan Gurukul to nurture the next generation through Hindi, Sanskrit, scriptures, and Vedic values, with three successful batches graduating and children across the UK discovering not just language but identity, mantra, and meaning. Alongside this, free Kundalini Yoga has been offered for over a decade, ensuring spirituality is not just spoken about — it is practiced and experienced.
+              </p>
+              <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+                Our sacred events have continued to make history. At Shravanabhava Ashram, 25 young students were trained in the full depth and symbolism of Rudra Abhishek science, transforming ritual into true understanding. Through our Santon Ki Vaani series at the Nehru Centre, we brought the life and teachings of Adi Shankaracharya alive for modern seekers. The "YugaPurush" event at the UK Parliament, celebrating the Ram Mandir inauguration, resonated globally as chants of Bhagwan Ram filled its historic halls. The Shivoham Shiv Mela in South London drew over 500 devotees, marking the first Aghori Tandav performed in the UK, and we now prepare for the grand Shivoham Shiva Festival 2026. In 2025, under the presidency of Acharya Abhi Yogi Ji, the foundation expanded into the USA, particularly Houston, while co-founding Sumarti Ashram in Odisha to preserve Sanatan roots, strengthen dharmic identity, and support tribal villages & communities. Guided by the mentorship of JagadGuru Swami Sandeepani Ji Maharaj, and powered by over 5,000 impacted community members, 1,000+ dedicated supporters, and countless volunteers, our vision remains clear: to bring true Sanatan literacy to every child in the world — not just rituals, but deep spiritual understanding of who we are and the timeless science within Sanatan Dharma.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
