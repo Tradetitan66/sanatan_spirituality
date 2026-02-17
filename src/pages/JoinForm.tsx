@@ -99,15 +99,15 @@ export default function JoinForm() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center px-4">
+      <div className="min-h-screen bg-pageBg flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center">
           <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-primary/20 flex items-center justify-center">
             <CheckCircle className="text-primary" size={64} />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Thank You for Joining!
           </h1>
-          <p className="text-gray-300 text-lg mb-8">
+          <p className="text-gray-700 text-lg mb-8">
             We have received your details. Our team will connect with you soon.
           </p>
           <Link
@@ -123,29 +123,29 @@ export default function JoinForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black flex items-center justify-center px-4 py-24">
+    <div className="min-h-screen bg-pageBg flex items-center justify-center px-4 py-24">
       <div className="max-w-md w-full">
         <Link
           to="/"
-          className="inline-flex items-center space-x-2 text-gray-400 hover:text-primary transition-colors mb-8"
+          className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors mb-8"
         >
           <ArrowLeft size={20} />
           <span>Back to Home</span>
         </Link>
 
-        <div className="bg-gradient-to-br from-gray-800 to-black p-6 sm:p-8 rounded-2xl border-2 border-primary/30 shadow-2xl">
+        <div className="bg-pageBg p-6 sm:p-8 rounded-2xl border-2 border-gray-200 shadow-2xl">
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Join Our Community
             </h1>
-            <p className="text-gray-400">
+            <p className="text-gray-600">
               Share your details and we will connect with you
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-gray-300 font-medium mb-2">
+              <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
                 Full Name
               </label>
               <div className="relative">
@@ -159,14 +159,14 @@ export default function JoinForm() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your name"
-                  className="w-full bg-gray-900/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-xl pl-12 pr-4 py-3 text-gray-900 placeholder-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="contact" className="block text-gray-300 font-medium mb-2">
+              <label htmlFor="contact" className="block text-gray-700 font-medium mb-2">
                 Contact Number
               </label>
               <div className="relative">
@@ -180,7 +180,7 @@ export default function JoinForm() {
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
                   placeholder="Any format: +91 98765 43210, +4477988898932, etc."
-                  className="w-full bg-gray-900/50 border border-gray-700 rounded-xl pl-12 pr-4 py-3 text-white placeholder-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
+                  className="w-full bg-gray-50 border border-gray-300 rounded-xl pl-12 pr-4 py-3 text-gray-900 placeholder-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
                   required
                   autoComplete="tel"
                 />
@@ -189,14 +189,14 @@ export default function JoinForm() {
             </div>
 
             <div>
-              <label htmlFor="service" className="block text-gray-300 font-medium mb-2">
+              <label htmlFor="service" className="block text-gray-700 font-medium mb-2">
                 Our Services
               </label>
               <select
                 id="service"
                 value={service}
                 onChange={(e) => setService(e.target.value)}
-                className="w-full bg-gray-900/50 border border-gray-700 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
+                className="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all"
               >
                 <option value="">Select a service</option>
                 {SERVICE_OPTIONS.map((opt) => (

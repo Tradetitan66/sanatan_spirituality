@@ -56,39 +56,39 @@ export default function Team() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-pageBg flex items-center justify-center">
         <div className="text-primary text-2xl">Loading team...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black pt-20">
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div className="min-h-screen bg-pageBg pt-20">
+      <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-900 mb-4">
             Our Story
           </h1>
           <div className="w-24 h-1 bg-primary mx-auto mb-8" />
-          <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 text-center max-w-3xl mx-auto">
             Meet the dedicated souls committed to preserving and sharing the wisdom of Sanatan Dharma
           </p>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-pageBg">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <img
               src="/our-story-community.png"
               alt="Sanatan Spirituality Foundation community"
-              className="w-full rounded-2xl border-2 border-primary/30 shadow-2xl object-cover"
+              className="w-full rounded-2xl border-2 border-gray-200 shadow-2xl object-cover"
             />
             <div className="mt-10 max-w-3xl mx-auto space-y-6">
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed text-left">
                 In 2022, a sacred seed was planted in the UK — a seed rooted in Sanatan Dharma, culture, and spiritual awakening — and it blossomed into Sanatan Sanstha of UK, not merely an organization but a living movement. Our journey began with a historic celebration of Geeta Jayanti inside the halls of the UK Parliament, where the timeless wisdom of the Bhagavad Gita echoed through a space that shapes modern governance, symbolizing a powerful meeting of ancient dharma and contemporary society. From there, the momentum only grew. We launched Sanatan Gurukul to nurture the next generation through Hindi, Sanskrit, scriptures, and Vedic values, with three successful batches graduating and children across the UK discovering not just language but identity, mantra, and meaning. Alongside this, free Kundalini Yoga has been offered for over a decade, ensuring spirituality is not just spoken about — it is practiced and experienced.
               </p>
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-left">
+              <p className="text-gray-700 text-base sm:text-lg leading-relaxed text-left">
                 Our sacred events have continued to make history. At Shravanabhava Ashram, 25 young students were trained in the full depth and symbolism of Rudra Abhishek science, transforming ritual into true understanding. Through our Santon Ki Vaani series at the Nehru Centre, we brought the life and teachings of Adi Shankaracharya alive for modern seekers. The "YugaPurush" event at the UK Parliament, celebrating the Ram Mandir inauguration, resonated globally as chants of Bhagwan Ram filled its historic halls. The Shivoham Shiv Mela in South London drew over 500 devotees, marking the first Aghori Tandav performed in the UK, and we now prepare for the grand Shivoham Shiva Festival 2026. In 2025, under the presidency of Acharya Abhi Yogi Ji, the foundation expanded into the USA, particularly Houston, while co-founding Sumarti Ashram in Odisha to preserve Sanatan roots, strengthen dharmic identity, and support tribal villages & communities. Guided by the mentorship of JagadGuru Swami Sandeepani Ji Maharaj, and powered by over 5,000 impacted community members, 1,000+ dedicated supporters, and countless volunteers, our vision remains clear: to bring true Sanatan literacy to every child in the world — not just rituals, but deep spiritual understanding of who we are and the timeless science within Sanatan Dharma.
               </p>
             </div>
@@ -99,9 +99,9 @@ export default function Team() {
       {Object.entries(groupedMembers)
         .sort(([a], [b]) => Number(a) - Number(b))
         .map(([level, members]) => (
-          <section key={level} className="py-16 bg-gray-900 odd:bg-black">
+          <section key={level} className="py-16 bg-pageBg odd:bg-creamCard">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">
                 {getHierarchyTitle(Number(level))}
               </h2>
               <div className="w-16 h-1 bg-primary mx-auto mb-12" />
@@ -116,7 +116,7 @@ export default function Team() {
                 {members.map((member, index) => (
                   <div
                     key={member.id}
-                    className={`bg-gradient-to-br from-gray-800 to-black rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group ${
+                    className={`bg-pageBg rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group ${
                       Number(level) === 1 ? 'flex flex-col md:flex-row' : ''
                     }`}
                     style={{
@@ -124,7 +124,7 @@ export default function Team() {
                     }}
                   >
                     <div
-                      className={`relative overflow-hidden bg-gradient-to-br from-primary/20 to-gray-800 ${
+                      className={`relative overflow-hidden bg-gray-100 ${
                         Number(level) === 1 ? 'md:w-1/2 h-64 md:h-auto' : 'h-64'
                       }`}
                     >
@@ -144,18 +144,18 @@ export default function Team() {
 
                     <div className={`p-6 ${Number(level) === 1 ? 'md:w-1/2 flex flex-col justify-center' : ''}`}>
                       <h3
-                        className={`font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 ${
+                        className={`font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors duration-300 ${
                           Number(level) === 1 ? 'text-3xl' : 'text-xl'
                         }`}
                       >
                         {member.name}
                       </h3>
                       <p className="text-primary font-semibold mb-3">{member.role}</p>
-                      <p className="text-gray-300 text-sm mb-4 leading-relaxed">{member.bio}</p>
+                      <p className="text-gray-700 text-sm mb-4 leading-relaxed">{member.bio}</p>
                       {member.specialization && (
                         <div className="mb-4">
-                          <p className="text-white font-semibold text-sm mb-2">Specialization:</p>
-                          <p className="text-gray-400 text-sm">{member.specialization}</p>
+                          <p className="text-gray-900 font-semibold text-sm mb-2">Specialization:</p>
+                          <p className="text-gray-600 text-sm">{member.specialization}</p>
                         </div>
                       )}
                     </div>
@@ -166,14 +166,14 @@ export default function Team() {
           </section>
         ))}
 
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gradient-to-br from-gray-800 to-black p-12 rounded-2xl border-2 border-primary/30 shadow-2xl text-center">
+          <div className="max-w-3xl mx-auto bg-pageBg p-12 rounded-2xl border-2 border-gray-200 shadow-2xl text-center">
             <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <MessageCircle className="text-primary" size={40} />
             </div>
-            <h2 className="text-4xl font-bold text-white mb-4">Join Our Team</h2>
-            <p className="text-gray-300 text-lg mb-8">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Join Our Team</h2>
+            <p className="text-gray-700 text-lg mb-8">
               Are you passionate about spirituality and service? We welcome dedicated individuals
               to join our community of volunteers and help spread the light of Sanatan wisdom.
             </p>

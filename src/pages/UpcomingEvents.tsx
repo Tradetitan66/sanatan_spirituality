@@ -101,31 +101,31 @@ export default function UpcomingEvents() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-pageBg flex items-center justify-center">
         <div className="text-primary text-2xl">Loading events...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black pt-20">
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div className="min-h-screen bg-pageBg pt-20">
+      <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-900 mb-4">
             Upcoming Events
           </h1>
           <div className="w-24 h-1 bg-primary mx-auto mb-8" />
-          <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 text-center max-w-3xl mx-auto">
             Join us for transformative spiritual experiences and sacred gatherings
           </p>
         </div>
       </section>
 
       {featuredEvent && (
-        <section className="py-12 bg-gray-900">
+        <section className="py-12 bg-pageBg">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-white mb-8">Featured Event</h2>
-            <div className="max-w-5xl mx-auto bg-gradient-to-br from-black to-gray-800 rounded-2xl overflow-hidden border-2 border-primary shadow-2xl shadow-primary/20">
+            <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Featured Event</h2>
+            <div className="max-w-5xl mx-auto bg-pageBg rounded-2xl overflow-hidden border-2 border-gray-200 shadow-2xl shadow-primary/20">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div
                   className="relative h-64 lg:h-auto cursor-pointer"
@@ -144,18 +144,18 @@ export default function UpcomingEvents() {
                   <div className="inline-block bg-primary/20 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4 self-start">
                     {featuredEvent.category}
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 break-words">{featuredEvent.title}</h3>
-                  <p className="text-gray-300 mb-6 text-sm sm:text-base">{featuredEvent.description}</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 break-words">{featuredEvent.title}</h3>
+                  <p className="text-gray-700 mb-6 text-sm sm:text-base">{featuredEvent.description}</p>
                   <div className="space-y-3 mb-6 min-w-0 break-words">
-                    <div className="flex items-center space-x-3 text-gray-300 text-sm sm:text-base">
+                    <div className="flex items-center space-x-3 text-gray-700 text-sm sm:text-base">
                       <Calendar className="text-primary flex-shrink-0" size={20} />
                       <span>{formatDate(featuredEvent.date)}</span>
                     </div>
-                    <div className="flex items-center space-x-3 text-gray-300 text-sm sm:text-base">
+                    <div className="flex items-center space-x-3 text-gray-700 text-sm sm:text-base">
                       <Clock className="text-primary flex-shrink-0" size={20} />
                       <span>{featuredEvent.time}</span>
                     </div>
-                    <div className="flex items-start space-x-3 text-gray-300 text-sm sm:text-base">
+                    <div className="flex items-start space-x-3 text-gray-700 text-sm sm:text-base">
                       <MapPin className="text-primary flex-shrink-0 mt-0.5" size={20} />
                       <span className="break-words">{featuredEvent.venue}</span>
                     </div>
@@ -167,12 +167,12 @@ export default function UpcomingEvents() {
         </section>
       )}
 
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-pageBg">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
             <div className="flex items-center space-x-3">
               <Filter className="text-primary flex-shrink-0" size={24} />
-              <h3 className="text-lg sm:text-2xl font-bold text-white">Filter by Category</h3>
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900">Filter by Category</h3>
             </div>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
@@ -182,7 +182,7 @@ export default function UpcomingEvents() {
                   className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
                     selectedCategory === category
                       ? 'bg-primary text-white'
-                      : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                      : 'bg-pageBg text-gray-700 border border-gray-200 hover:border-primary hover:bg-gray-50'
                   }`}
                 >
                   {category}
@@ -195,7 +195,7 @@ export default function UpcomingEvents() {
             {filteredEvents.map((event) => (
               <div
                 key={event.id}
-                className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl overflow-hidden border border-gray-700 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group"
+                className="bg-pageBg rounded-xl overflow-hidden border border-gray-200 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group"
               >
                 <div
                   className="relative h-48 overflow-hidden cursor-pointer"
@@ -211,20 +211,20 @@ export default function UpcomingEvents() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors duration-300">
                     {event.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">{event.description}</p>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.description}</p>
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                    <div className="flex items-center space-x-2 text-gray-700 text-sm">
                       <Calendar className="text-primary" size={16} />
                       <span>{formatDate(event.date)}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                    <div className="flex items-center space-x-2 text-gray-700 text-sm">
                       <Clock className="text-primary" size={16} />
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-300 text-sm">
+                    <div className="flex items-center space-x-2 text-gray-700 text-sm">
                       <MapPin className="text-primary" size={16} />
                       <span>{event.venue}</span>
                     </div>
@@ -236,21 +236,21 @@ export default function UpcomingEvents() {
 
           {filteredEvents.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-xl">No events found in this category.</p>
+              <p className="text-gray-600 text-xl">No events found in this category.</p>
             </div>
           )}
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-black to-gray-900">
+      <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto bg-gradient-to-br from-gray-800 to-black p-8 md:p-12 rounded-2xl border-2 border-primary/30 shadow-2xl">
+          <div className="max-w-2xl mx-auto bg-pageBg p-8 md:p-12 rounded-2xl border-2 border-gray-200 shadow-2xl">
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="text-primary" size={32} />
               </div>
-              <h2 className="text-3xl font-bold text-white mb-3">Get Event Updates on WhatsApp</h2>
-              <p className="text-gray-300">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">Get Event Updates on WhatsApp</h2>
+              <p className="text-gray-700">
                 Join our WhatsApp group for event reminders and updates.
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function UpcomingEvents() {
                   alt="WhatsApp QR Code"
                   className="w-40 h-40 object-contain"
                 />
-                <p className="text-gray-400 text-sm mt-2">Scan to join</p>
+                <p className="text-gray-600 text-sm mt-2">Scan to join</p>
               </div>
               <a
                 href="https://chat.whatsapp.com/HAmQud3OOaiKAGqbyxqBAv?mode=gi_t"
