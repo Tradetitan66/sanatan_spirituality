@@ -125,7 +125,7 @@ export default function UpcomingEvents() {
         <section className="py-12 bg-pageBg">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Featured Event</h2>
-            <div className="max-w-5xl mx-auto bg-pageBg rounded-2xl overflow-hidden border-2 border-gray-200 shadow-2xl shadow-primary/20">
+            <div className="max-w-5xl mx-auto bg-pageBg rounded-2xl overflow-hidden border-2 border-maroon shadow-2xl shadow-primary/20">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div
                   className="relative h-64 lg:h-auto cursor-pointer"
@@ -182,7 +182,7 @@ export default function UpcomingEvents() {
                   className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
                     selectedCategory === category
                       ? 'bg-primary text-white'
-                      : 'bg-pageBg text-gray-700 border border-gray-200 hover:border-primary hover:bg-gray-50'
+                      : 'bg-pageBg text-gray-700 border border-maroon hover:border-primary hover:bg-gray-50'
                   }`}
                 >
                   {category}
@@ -195,7 +195,7 @@ export default function UpcomingEvents() {
             {filteredEvents.map((event) => (
               <div
                 key={event.id}
-                className="bg-pageBg rounded-xl overflow-hidden border border-gray-200 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group"
+                className="bg-pageBg rounded-xl overflow-hidden border border-maroon hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group"
               >
                 <div
                   className="relative h-48 overflow-hidden cursor-pointer"
@@ -244,7 +244,7 @@ export default function UpcomingEvents() {
 
       <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto bg-pageBg p-8 md:p-12 rounded-2xl border-2 border-gray-200 shadow-2xl">
+          <div className="max-w-2xl mx-auto bg-pageBg p-8 md:p-12 rounded-2xl border-2 border-maroon shadow-2xl">
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="text-primary" size={32} />

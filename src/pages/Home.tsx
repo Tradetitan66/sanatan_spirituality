@@ -195,7 +195,7 @@ export default function Home() {
                   animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
                 }}
               >
-                <div className="relative bg-pageBg p-8 rounded-full aspect-square flex flex-col items-center justify-center border-4 border-gray-200 group-hover:border-primary transition-all duration-500 shadow-xl group-hover:shadow-primary/30">
+                <div className="relative bg-pageBg p-8 rounded-full aspect-square flex flex-col items-center justify-center border-4 border-maroon group-hover:border-primary transition-all duration-500 shadow-xl group-hover:shadow-primary/30">
                   <div className="absolute inset-0 rounded-full bg-primary/5 group-hover:bg-primary/10 transition-all duration-500" />
                   <p className="text-6xl md:text-7xl text-primary font-bold mb-2 relative z-10 devanagari">
                     {pillar.name}
@@ -229,9 +229,10 @@ export default function Home() {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div
+                <Link
                   key={index}
-                  className="bg-pageBg p-6 rounded-xl border border-gray-200 hover:border-primary transition-all duration-300 group cursor-pointer shadow-lg hover:shadow-primary/20"
+                  to="/join"
+                  className="block bg-pageBg p-6 rounded-xl border border-maroon hover:border-primary transition-all duration-300 group shadow-lg hover:shadow-primary/20"
                   style={{
                     animation: `fadeInUp 0.6s ease-out ${index * 0.05}s both`,
                   }}
@@ -245,7 +246,7 @@ export default function Home() {
                   <p className="text-gray-600 text-sm">
                     {service.description}
                   </p>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -273,7 +274,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="bg-pageBg p-8 rounded-2xl border-2 border-gray-200 shadow-2xl">
+            <div className="bg-pageBg p-8 rounded-2xl border-2 border-maroon shadow-2xl">
               <div className="text-center">
                 <div className="text-8xl mb-4">🕉️</div>
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Santon ki Vani</h3>

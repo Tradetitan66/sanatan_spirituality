@@ -109,7 +109,7 @@ export default function WhatWeDone() {
               return (
                 <div
                   key={index}
-                  className="bg-pageBg p-8 rounded-2xl border-2 border-gray-200 text-center group hover:border-primary transition-all duration-300 shadow-xl"
+                  className="bg-pageBg p-8 rounded-2xl border-2 border-maroon text-center group hover:border-primary transition-all duration-300 shadow-xl"
                 >
                   <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary transition-all duration-300">
                     <Icon className="text-primary group-hover:text-white transition-colors duration-300" size={40} />
@@ -131,7 +131,7 @@ export default function WhatWeDone() {
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">Featured Video</h2>
           <div className="w-24 h-1 bg-primary mx-auto mb-12" />
           <div className="max-w-4xl mx-auto">
-            <div className="aspect-video w-full rounded-xl overflow-hidden border border-gray-200">
+            <div className="aspect-video w-full rounded-xl overflow-hidden border border-maroon">
               <iframe
                 src={`https://www.youtube.com/embed/${FEATURED_VIDEO_ID}`}
                 title="YouTube video"
@@ -154,7 +154,7 @@ export default function WhatWeDone() {
                 {index !== timeline.length - 1 && (
                   <div className="absolute left-[7px] top-4 bottom-0 w-0.5 bg-primary/30" />
                 )}
-                <div className="bg-pageBg p-6 rounded-xl border border-gray-200 hover:border-primary transition-all duration-300">
+                <div className="bg-pageBg p-6 rounded-xl border border-maroon hover:border-primary transition-all duration-300">
                   <div className="text-primary font-bold text-2xl mb-2">{item.year}</div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
                   <div className="space-y-2">

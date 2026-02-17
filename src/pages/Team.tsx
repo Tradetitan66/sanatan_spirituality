@@ -82,7 +82,7 @@ export default function Team() {
             <img
               src="/our-story-community.png"
               alt="Sanatan Spirituality Foundation community"
-              className="w-full rounded-2xl border-2 border-gray-200 shadow-2xl object-cover"
+              className="w-full rounded-2xl border-2 border-maroon shadow-2xl object-cover"
             />
             <div className="mt-10 max-w-3xl mx-auto space-y-6">
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed text-left">
@@ -116,7 +116,7 @@ export default function Team() {
                 {members.map((member, index) => (
                   <div
                     key={member.id}
-                    className={`bg-pageBg rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group ${
+                    className={`bg-pageBg rounded-2xl overflow-hidden border-2 border-maroon hover:border-primary transition-all duration-300 shadow-lg hover:shadow-primary/20 group ${
                       Number(level) === 1 ? 'flex flex-col md:flex-row' : ''
                     }`}
                     style={{
@@ -168,7 +168,7 @@ export default function Team() {
 
       <section className="py-20 bg-pageBg">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-pageBg p-12 rounded-2xl border-2 border-gray-200 shadow-2xl text-center">
+          <div className="max-w-3xl mx-auto bg-pageBg p-12 rounded-2xl border-2 border-maroon shadow-2xl text-center">
             <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <MessageCircle className="text-primary" size={40} />
             </div>

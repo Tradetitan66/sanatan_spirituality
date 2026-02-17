@@ -133,7 +133,7 @@ export default function JoinForm() {
           <span>Back to Home</span>
         </Link>
 
-        <div className="bg-pageBg p-6 sm:p-8 rounded-2xl border-2 border-gray-200 shadow-2xl">
+        <div className="bg-pageBg p-6 sm:p-8 rounded-2xl border-2 border-maroon shadow-2xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Join Our Community

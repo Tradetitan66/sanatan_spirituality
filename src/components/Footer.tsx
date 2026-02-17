@@ -111,7 +111,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="bg-pageBg p-3 rounded-lg inline-block">
+            <div className="bg-pageBg p-3 rounded-lg inline-block border-2 border-maroon">
               <img
                 src="/whatsapp-qr.png"
                 alt="WhatsApp QR Code"
